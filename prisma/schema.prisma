@@ -25,3 +25,22 @@ model Categoria {
   nombre String @unique
   productos Producto[]
 }
+
+model Usuario {
+  id Int @id @default(autoincrement())
+  nombreUsuario String @unique
+  email String @unique
+  password String
+  nombre String?
+  apellido String?
+  rol Rol @default(USUARIO)
+  fechaRegistro DateTime @default(now())
+  activo Boolean @default(true)
+  ultimoAcceso DateTime?
+}
+
+enum Rol {
+  ADMINISTRADOR
+  USUARIO
+  CONSULTOR
+}
