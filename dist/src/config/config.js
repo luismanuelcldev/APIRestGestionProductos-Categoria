@@ -9,6 +9,7 @@ exports.config = {
     // Servidor
     puerto: Number(process.env.PORT) || 3001,
     entorno: process.env.NODE_ENV || 'development',
+    esProduccion: process.env.NODE_ENV === 'production',
     // Paginación
     paginacionPredeterminada: {
         limite: 10,

@@ -38,7 +38,7 @@ async function crearAdministrador() {
         });
         logger_1.logger.info(`Usuario administrador creado con ID: ${nuevoAdmin.id}`);
         logger_1.logger.info('Credenciales: admin / admin123');
-        logger_1.logger.warn('¡Cambie la contraseña inmediatamente después del primer inicio de sesion!');
+        logger_1.logger.warn('¡Cambie la contraseña inmediatamente después del primer inicio de sesión!');
     }
     catch (error) {
         logger_1.logger.error('Error al crear el usuario administrador:', error);

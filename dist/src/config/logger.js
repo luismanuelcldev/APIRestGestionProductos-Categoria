@@ -10,7 +10,7 @@ const config_1 = require("./config");
 const logFormat = winston_1.default.format.combine(winston_1.default.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), winston_1.default.format.errors({ stack: true }), winston_1.default.format.printf(({ level, message, timestamp, stack }) => {
     return `${timestamp} [${level.toUpperCase()}]: ${message} ${stack || ''}`;
 }));
-// Diferentes niveles para desarrollo y producción
+// Adaptado a diferentes niveles para desarrollo y produccionn
 const logLevel = config_1.config.esProduccion ? 'info' : 'debug';
 // Crear el logger de Winston
 exports.logger = winston_1.default.createLogger({
@@ -33,4 +33,4 @@ exports.logger = winston_1.default.createLogger({
 });
 // Agregar un nivel personalizado para eventos de seguridad
 winston_1.default.addColors({ security: 'magenta' });
-exports.logger.levels.security = 4; // Entre warning e info
+exports.logger.levels.security = 4;
