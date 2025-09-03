@@ -1,0 +1,33 @@
+2025-09-02 14:33:47 [INFO]: Usuario administrador creado con ID: 1 
+2025-09-02 14:33:47 [INFO]: Credenciales: admin / admin123 
+2025-09-02 14:33:47 [WARN]: ¡Cambie la contraseña inmediatamente después del primer inicio de sesión! 
+2025-09-02 14:55:44 [INFO]: Inicio de sesión exitoso: admin - IP: ::1 
+2025-09-02 14:55:44 [INFO]: HTTP POST /api/auth/login [32m200[39m - 261ms 
+2025-09-02 14:59:21 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 14:59:21 [INFO]: HTTP GET /api/auth/perfil [32m200[39m - 20ms 
+2025-09-02 14:59:31 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 14:59:31 [DEBUG]: Consulta de categorías con 0 filtros - Página 1 
+2025-09-02 14:59:31 [INFO]: HTTP GET /api/categorias [32m200[39m - 21ms 
+2025-09-02 15:03:06 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 15:03:06 [INFO]: HTTP GET /api/categorias/1 [33m404[39m - 22ms 
+2025-09-02 15:03:11 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 15:03:11 [INFO]: HTTP GET /api/categorias/5 [32m200[39m - 82ms 
+2025-09-02 15:05:16 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 15:05:16 [DEBUG]: Consulta de productos con 0 filtros - Página 1 
+2025-09-02 15:05:16 [INFO]: HTTP GET /api/productos?pagina=1&limite=5 [32m200[39m - 9ms 
+2025-09-02 15:06:25 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 15:06:25 [DEBUG]: Consulta de productos con 1 filtros - Página 1 
+2025-09-02 15:06:25 [INFO]: HTTP GET /api/productos?precioMin=5000&precioMax=15000 [32m200[39m - 16ms 
+2025-09-02 15:08:01 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 15:08:01 [DEBUG]: Consulta de productos con 1 filtros - Página 1 
+2025-09-02 15:08:01 [INFO]: HTTP GET /api/productos?pagina=1&limite=10&ordenarPor=precio&ordenarDireccion=desc&precioMin=1000&stock=true [32m200[39m - 9ms 
+2025-09-02 15:08:14 [INFO]: HTTP GET /api-docs [36m301[39m - 3ms 
+2025-09-02 15:08:14 [INFO]: HTTP GET /api-docs/ [32m200[39m - 2ms 
+2025-09-02 15:08:26 [INFO]: HTTP GET /api-docs [36m301[39m - 0ms 
+2025-09-02 15:08:26 [INFO]: HTTP GET /api-docs/ [32m200[39m - 2ms 
+2025-09-02 15:08:50 [INFO]: HTTP GET /api-docs.json [32m200[39m - 1ms 
+2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/ [36m304[39m - 3ms 
+2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/swagger-ui-init.js [32m200[39m - 0ms 
+2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/swagger-ui.css [36m304[39m - 7ms 
+2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/swagger-ui-bundle.js [36m304[39m - 7ms 
+2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/swagger-ui-standalone-preset.js [36m304[39m - 9ms 
