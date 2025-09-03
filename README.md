@@ -1,5 +1,8 @@
 # API REST de Gestión de Productos
 
+Esta API REST proporciona un sistema completo para la gestión de productos y categorías. Desarrollada con TypeScript, Express y Prisma ORM, ofrece funcionalidades avanzadas como autenticación JWT, sistema de roles de usuario, paginación, filtrado y documentación interactiva con Swagger UI.
+
+La API permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre productos y categorías, manteniendo relaciones entre ellos y proporcionando un control de acceso basado en roles para garantizar la seguridad de las operaciones.
 
 ## Tabla de Contenido
 
@@ -22,16 +25,10 @@
 - [Paginación y Filtrado](#paginación-y-filtrado)
 - [Sistema de Logs](#sistema-de-logs)
 - [Seguridad](#seguridad)
-- [Pruebas](#pruebas)
 - [Contribución](#contribución)
 - [Licencia](#licencia)
 - [Contacto](#contacto)
 
-## Descripción General
-
-Esta API REST proporciona un sistema completo para la gestión de productos y categorías. Desarrollada con TypeScript, Express y Prisma ORM, ofrece funcionalidades avanzadas como autenticación JWT, sistema de roles de usuario, paginación, filtrado y documentación interactiva con Swagger UI.
-
-La API permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre productos y categorías, manteniendo relaciones entre ellos y proporcionando un control de acceso basado en roles para garantizar la seguridad de las operaciones.
 
 ## Características
 
@@ -47,7 +44,7 @@ La API permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) so
 - **Base de datos SQLite** con Prisma ORM para desarrollo rápido
 - **Scripts de migración y semillas** para configuración inicial
 
-## 🔧 Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **Node.js**: Entorno de ejecución JavaScript del lado del servidor
 - **TypeScript**: Lenguaje de tipado estático que compila a JavaScript
@@ -117,7 +114,7 @@ La API permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) so
 
 - **Node.js** (versión 14.0.0 o superior)
 - **npm** (versión 6.0.0 o superior)
-- **Git** (opcional, para clonar el repositorio)
+- **Git** (Para clonar el repositorio)
 
 ## Instalación
 
@@ -144,23 +141,6 @@ La API permite realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) so
    ```
 
 ## Configuración
-
-### Base de datos
-
-1. **Verificar la conexión a la base de datos**:
-   ```bash
-   npm run check-db
-   ```
-
-2. **Crear las tablas en la base de datos**:
-   ```bash
-   npx prisma migrate dev
-   ```
-
-3. **Poblar la base de datos con datos de prueba** (opcional):
-   ```bash
-   npm run seed
-   ```
 
 ### Usuario Administrador
 
@@ -231,31 +211,7 @@ http://localhost:3001/api-docs
 | `PUT` | `/api/categorias/:id` | Actualizar una categoría existente | Administrador |
 | `DELETE` | `/api/categorias/:id` | Eliminar una categoría | Administrador |
 
-## 💻 Ejemplos de uso
 
-### Iniciar sesión
-
-```bash
-
-```
-
-### Crear una categoría (con autenticación)
-
-```bash
-
-```
-
-### Crear un producto (con autenticación)
-
-```bash
-
-```
-
-### Obtener productos con paginación y filtros
-
-```bash
-
-```
 
 ## Paginación y Filtrado
 
