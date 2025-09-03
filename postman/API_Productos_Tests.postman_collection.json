@@ -1,0 +1,792 @@
+{
+	"info": {
+		"_postman_id": "e5e2fc9c-1b34-4d0e-aa3b-8c6b2c5c90e5",
+		"name": "API Productos Tests",
+		"description": "Colección de pruebas para la API de Productos y Categorías con autenticación JWT, paginación y filtros.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticación",
+			"item": [
+				{
+					"name": "Iniciar sesión (admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Estado 200 OK\", function() {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Token JWT recibido\", function() {",
+									"    pm.expect(jsonData.token).to.be.a('string');",
+									"    pm.expect(jsonData.token.length).to.be.greaterThan(20);",
+									"    ",
+									"    // Guardar el token para otras solicitudes",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreUsuario\": \"admin\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Iniciar sesión como administrador"
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar nuevo usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreUsuario\": \"usuario_prueba\",\n    \"email\": \"usuario@ejemplo.com\",\n    \"password\": \"contraseña123\",\n    \"nombre\": \"Usuario\",\n    \"apellido\": \"De Prueba\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"registrar"
+							]
+						},
+						"description": "Registrar un nuevo usuario en el sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener perfil",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/auth/perfil",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"perfil"
+							]
+						},
+						"description": "Obtener información del perfil del usuario autenticado"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para autenticación y gestión de usuarios"
+		},
+		{
+			"name": "Categorías",
+			"item": [
+				{
+					"name": "Obtener todas las categorías",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"categorias"
+							]
+						},
+						"description": "Lista todas las categorías disponibles"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear categoría",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Electrónica\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"categorias"
+							]
+						},
+						"description": "Crear una nueva categoría (requiere rol de administrador)"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener categoría por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/categorias/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"categorias",
+								"1"
+							]
+						},
+						"description": "Obtener detalles de una categoría específica por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar categoría",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Electrónica y Tecnología\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/categorias/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"categorias",
+								"1"
+							]
+						},
+						"description": "Actualizar una categoría existente (requiere rol de administrador)"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar categoría",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/categorias/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"categorias",
+								"1"
+							]
+						},
+						"description": "Eliminar una categoría (requiere rol de administrador)"
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones CRUD para categorías de productos"
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Obtener todos los productos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							]
+						},
+						"description": "Lista todos los productos disponibles"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Smartphone X10\",\n    \"precio\": 12999,\n    \"stock\": 50,\n    \"categoriaId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							]
+						},
+						"description": "Crear un nuevo producto (requiere rol de administrador)"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener producto por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						},
+						"description": "Obtener detalles de un producto específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Smartphone X10 Pro\",\n    \"precio\": 14999,\n    \"stock\": 30,\n    \"categoriaId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/productos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						},
+						"description": "Actualizar un producto existente (requiere rol de administrador)"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos",
+								"1"
+							]
+						},
+						"description": "Eliminar un producto (requiere rol de administrador)"
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones CRUD para productos"
+		},
+		{
+			"name": "Paginación y Filtros",
+			"item": [
+				{
+					"name": "Productos con paginación",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos?pagina=1&limite=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							],
+							"query": [
+								{
+									"key": "pagina",
+									"value": "1"
+								},
+								{
+									"key": "limite",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Obtener productos con paginación"
+					},
+					"response": []
+				},
+				{
+					"name": "Productos con filtro de precio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos?precioMin=5000&precioMax=15000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							],
+							"query": [
+								{
+									"key": "precioMin",
+									"value": "5000"
+								},
+								{
+									"key": "precioMax",
+									"value": "15000"
+								}
+							]
+						},
+						"description": "Obtener productos filtrando por rango de precio"
+					},
+					"response": []
+				},
+				{
+					"name": "Productos ordenados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos?ordenarPor=precio&ordenarDireccion=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							],
+							"query": [
+								{
+									"key": "ordenarPor",
+									"value": "precio"
+								},
+								{
+									"key": "ordenarDireccion",
+									"value": "desc"
+								}
+							]
+						},
+						"description": "Obtener productos ordenados por precio descendente"
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por categoría",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos?categoriaId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							],
+							"query": [
+								{
+									"key": "categoriaId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Filtrar productos por categoría"
+					},
+					"response": []
+				},
+				{
+					"name": "Productos búsqueda compleja",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/productos?pagina=1&limite=10&ordenarPor=precio&ordenarDireccion=desc&precioMin=1000&stock=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"productos"
+							],
+							"query": [
+								{
+									"key": "pagina",
+									"value": "1"
+								},
+								{
+									"key": "limite",
+									"value": "10"
+								},
+								{
+									"key": "ordenarPor",
+									"value": "precio"
+								},
+								{
+									"key": "ordenarDireccion",
+									"value": "desc"
+								},
+								{
+									"key": "precioMin",
+									"value": "1000"
+								},
+								{
+									"key": "stock",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Búsqueda compleja combinando paginación, ordenamiento y filtros"
+					},
+					"response": []
+				}
+			],
+			"description": "Pruebas de paginación, filtrado y ordenamiento"
+		},
+		{
+			"name": "Documentación",
+			"item": [
+				{
+					"name": "Swagger UI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api-docs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api-docs"
+							]
+						},
+						"description": "Acceder a la documentación interactiva Swagger UI"
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger JSON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api-docs.json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api-docs.json"
+							]
+						},
+						"description": "Obtener la especificación OpenAPI en formato JSON"
+					},
+					"response": []
+				}
+			],
+			"description": "Acceso a la documentación de la API"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3001"
+		}
+	]
+}
