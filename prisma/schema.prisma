@@ -1,15 +1,18 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// Configuro el generador del cliente de Prisma
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
+// Configuro la fuente de datos (SQLite)
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
 }
 
+// Defino el modelo Producto
 model Producto {
   id Int @id @default(autoincrement())
   nombre String @unique
@@ -20,12 +23,14 @@ model Producto {
   stock Int @default(0)
 }
 
+// Defino el modelo Categoria
 model Categoria {
   id Int @id @default(autoincrement())
   nombre String @unique
   productos Producto[]
 }
 
+// Defino el modelo Usuario
 model Usuario {
   id Int @id @default(autoincrement())
   nombreUsuario String @unique
@@ -39,6 +44,7 @@ model Usuario {
   ultimoAcceso DateTime?
 }
 
+// Defino el enum para los Roles
 enum Rol {
   ADMINISTRADOR
   USUARIO
