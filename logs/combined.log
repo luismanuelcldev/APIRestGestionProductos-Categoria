@@ -31,3 +31,79 @@
 2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/swagger-ui.css [36m304[39m - 7ms 
 2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/swagger-ui-bundle.js [36m304[39m - 7ms 
 2025-09-02 16:12:38 [INFO]: HTTP GET /api-docs/swagger-ui-standalone-preset.js [36m304[39m - 9ms 
+2025-09-02 21:27:05 [INFO]: HTTP GET /api-docs/ [36m304[39m - 6ms 
+2025-09-02 21:27:05 [INFO]: HTTP GET /api-docs/swagger-ui.css [36m304[39m - 2ms 
+2025-09-02 21:27:05 [INFO]: HTTP GET /api-docs/swagger-ui-init.js [36m304[39m - 0ms 
+2025-09-02 21:27:05 [INFO]: HTTP GET /api-docs/swagger-ui-bundle.js [36m304[39m - 3ms 
+2025-09-02 21:27:05 [INFO]: HTTP GET /api-docs/swagger-ui-standalone-preset.js [36m304[39m - 6ms 
+2025-09-02 21:27:07 [INFO]: HTTP GET /api-docs/favicon-32x32.png [36m304[39m - 1ms 
+2025-09-02 21:36:19 [DEBUG]: Usuario admin autenticado correctamente 
+2025-09-02 21:36:19 [DEBUG]: Consulta de categorías con 0 filtros - Página 1 
+2025-09-02 21:36:19 [INFO]: HTTP GET /api/categorias [32m200[39m - 41ms 
+2025-11-26 14:15:19 [INFO]: HTTP GET / [32m200[39m - 7ms 
+2025-11-26 14:15:19 [INFO]: HTTP GET /favicon.ico [33m404[39m - 2ms 
+2025-11-26 14:15:36 [INFO]: HTTP GET / [32m200[39m - 1ms 
+2025-11-26 14:15:53 [INFO]: HTTP GET / [32m200[39m - 0ms 
+2025-11-26 14:32:24 [INFO]: HTTP GET /api-docs [36m301[39m - 3ms 
+2025-11-26 14:32:24 [INFO]: HTTP GET /api-docs/ [32m200[39m - 3ms 
+2025-11-26 14:32:24 [INFO]: HTTP GET /api-docs/swagger-ui.css [32m200[39m - 7ms 
+2025-11-26 14:32:24 [INFO]: HTTP GET /api-docs/swagger-ui-init.js [32m200[39m - 0ms 
+2025-11-26 14:32:24 [INFO]: HTTP GET /api-docs/swagger-ui-standalone-preset.js [32m200[39m - 37ms 
+2025-11-26 14:32:24 [INFO]: HTTP GET /api-docs/swagger-ui-bundle.js [32m200[39m - 51ms 
+2025-11-26 14:32:25 [INFO]: HTTP GET /api-docs/favicon-32x32.png [32m200[39m - 3ms 
+2025-11-26 14:36:08 [INFO]: HTTP GET / [32m200[39m - 0ms 
+2025-11-26 14:36:45 [INFO]: HTTP GET / [32m200[39m - 0ms 
+2025-11-26 14:36:58 [INFO]: HTTP GET / [32m200[39m - 0ms 
+2025-11-26 14:39:19 [INFO]: Inicio de sesión exitoso: admin - IP: ::1 
+2025-11-26 14:39:19 [INFO]: HTTP POST /api/auth/login [32m200[39m - 89ms 
+2025-11-26 14:43:24 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 14:43:24 [INFO]: HTTP POST /api/categorias [32m201[39m - 29ms 
+2025-11-26 15:07:20 [INFO]: HTTP GET / [32m200[39m - 3ms 
+2025-11-26 15:14:01 [INFO]: HTTP GET /api-docs [36m301[39m - 3ms 
+2025-11-26 15:14:01 [INFO]: HTTP GET /api-docs/ [32m200[39m - 2ms 
+2025-11-26 15:14:29 [INFO]: HTTP GET /api-docs/ [36m304[39m - 2ms 
+2025-11-26 15:14:29 [INFO]: HTTP GET /api-docs/swagger-ui.css [36m304[39m - 3ms 
+2025-11-26 15:14:29 [INFO]: HTTP GET /api-docs/swagger-ui-bundle.js [36m304[39m - 5ms 
+2025-11-26 15:14:29 [INFO]: HTTP GET /api-docs/swagger-ui-standalone-preset.js [36m304[39m - 1ms 
+2025-11-26 15:14:29 [INFO]: HTTP GET /api-docs/swagger-ui-init.js [36m304[39m - 2ms 
+2025-11-26 15:14:29 [INFO]: HTTP GET /api-docs/favicon-32x32.png [36m304[39m - 1ms 
+2025-11-26 15:16:47 [WARN]: Acceso denegado: Token no proporcionado - IP: ::1 
+2025-11-26 15:16:47 [INFO]: HTTP GET /api/categorias [33m401[39m - 2ms 
+2025-11-26 15:21:09 [INFO]: Inicio de sesión exitoso: admin - IP: ::1 
+2025-11-26 15:21:09 [INFO]: HTTP POST /api/auth/login [32m200[39m - 134ms 
+2025-11-26 15:23:56 [WARN]: Acceso denegado: Token no proporcionado - IP: ::1 
+2025-11-26 15:23:56 [INFO]: HTTP GET /api/categorias [33m401[39m - 1ms 
+2025-11-26 15:24:31 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:24:31 [DEBUG]: Consulta de categorías con 0 filtros - Página 1 
+2025-11-26 15:24:32 [INFO]: HTTP GET /api/categorias [32m200[39m - 10ms 
+2025-11-26 15:24:37 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:24:37 [DEBUG]: Consulta de categorías con 0 filtros - Página 1 
+2025-11-26 15:24:37 [INFO]: HTTP GET /api/categorias [32m200[39m - 6ms 
+2025-11-26 15:27:17 [WARN]: Acceso denegado: Token no proporcionado - IP: ::1 
+2025-11-26 15:27:17 [INFO]: HTTP POST /api/categorias [33m401[39m - 1ms 
+2025-11-26 15:27:30 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:27:30 [INFO]: HTTP POST /api/categorias [32m201[39m - 27ms 
+2025-11-26 15:29:41 [WARN]: Acceso denegado: Token no proporcionado - IP: ::1 
+2025-11-26 15:29:41 [INFO]: HTTP GET /api/categorias [33m401[39m - 2ms 
+2025-11-26 15:29:51 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:29:51 [DEBUG]: Consulta de categorías con 0 filtros - Página 1 
+2025-11-26 15:29:51 [INFO]: HTTP GET /api/categorias [32m200[39m - 6ms 
+2025-11-26 15:30:21 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:30:21 [INFO]: HTTP DELETE /api/categorias/5 [33m400[39m - 5ms 
+2025-11-26 15:30:34 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:30:34 [DEBUG]: Consulta de categorías con 0 filtros - Página 1 
+2025-11-26 15:30:34 [INFO]: HTTP GET /api/categorias/ [32m200[39m - 4ms 
+2025-11-26 15:30:48 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:30:48 [INFO]: HTTP DELETE /api/categorias/11 [32m200[39m - 20ms 
+2025-11-26 15:30:57 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:30:57 [DEBUG]: Consulta de categorías con 0 filtros - Página 1 
+2025-11-26 15:30:57 [INFO]: HTTP GET /api/categorias/ [32m200[39m - 5ms 
+2025-11-26 15:33:00 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:33:00 [DEBUG]: Consulta de productos con 0 filtros - Página 1 
+2025-11-26 15:33:00 [INFO]: HTTP GET /api/productos [32m200[39m - 7ms 
+2025-11-26 15:38:46 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:38:46 [INFO]: HTTP POST /api/productos [32m201[39m - 29ms 
+2025-11-26 15:40:05 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:40:05 [INFO]: HTTP PUT /api/productos/14 [32m200[39m - 32ms 
+2025-11-26 15:40:39 [DEBUG]: Usuario admin autenticado correctamente 
+2025-11-26 15:40:39 [INFO]: HTTP DELETE /api/productos/14 [32m200[39m - 32ms 
