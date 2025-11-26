@@ -11,17 +11,17 @@ import swaggerSpec from './documentacion/swagger.config';
 import { config } from './config/config';
 import { logger } from './config/logger';
 
-// Configuración de la app
+// Configuro la app
 const app: Express = express();
 const PORT: number = config.puerto;
 
-// Middlewares de seguridad y utilidades
+// Configuro middlewares de seguridad y utilidades
 app.use(helmet()); // Seguridad para headers HTTP
 app.use(cors()); // Habilitar CORS
 app.use(express.json()); // Parsear JSON en las solicitudes
 app.use(express.urlencoded({ extended: true })); // Parsear URL-encoded
 
-// Middleware para logging con Winston
+// Configuro middleware para logging con Winston
 app.use(expressWinston.logger({
   winstonInstance: logger,
   meta: config.esProduccion ? false : true, // Mostrar metadatos en desarrollo
@@ -29,7 +29,7 @@ app.use(expressWinston.logger({
   colorize: true
 }));
 
-// Configuración de Swagger UI
+// Configuro Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
   customCss: '.swagger-ui .topbar { display: none }',
   customSiteTitle: 'API REST de Productos y Categorías',
@@ -41,13 +41,13 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
   }
 }));
 
-// Endpoint para obtener la especificación de Swagger en formato JSON
+// Defino endpoint para obtener la especificación de Swagger en formato JSON
 app.get('/api-docs.json', (req: Request, res: Response) => {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
 
-// Ruta raíz
+// Defino la ruta raíz
 app.get('/', (req: Request, res: Response) => {
   res.json({
     mensaje: 'API de Productos y Categorías con Prisma',
@@ -61,12 +61,12 @@ app.get('/', (req: Request, res: Response) => {
   });
 });
 
-// Rutas de API
+// Defino las rutas de la API
 app.use('/api', productosRouter);
 app.use('/api', categoriasRouter);
 app.use('/api', authRouter);
 
-// Middleware para manejar rutas no encontradas
+// Defino middleware para manejar rutas no encontradas
 app.use((req: Request, res: Response) => {
   res.status(404).json({
     mensaje: 'Ruta no encontrada',
@@ -74,13 +74,13 @@ app.use((req: Request, res: Response) => {
   });
 });
 
-// Middleware para logging de errores
+// Configuro middleware para logging de errores
 app.use(expressWinston.errorLogger({
   winstonInstance: logger,
   msg: 'HTTP {{req.method}} {{req.url}} {{res.statusCode}} - {{err.message}}'
 }));
 
-// Middleware para manejar errores
+// Defino middleware para manejar errores
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   logger.error(`Error inesperado: ${err.message}`, { stack: err.stack });
   
@@ -90,7 +90,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-// Iniciar servidor
+// Inicio el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
   console.log(`http://localhost:${PORT}`);
