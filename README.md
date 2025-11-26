@@ -211,7 +211,32 @@ http://localhost:3001/api-docs
 | `PUT` | `/api/categorias/:id` | Actualizar una categoría existente | Administrador |
 | `DELETE` | `/api/categorias/:id` | Eliminar una categoría | Administrador |
 
+## Ejemplos de uso
 
+### Crear un Producto (POST)
+
+**URL:** `http://localhost:3001/api/productos`
+**Headers:** `Authorization: Bearer <TU_TOKEN>`
+**Body (JSON):**
+```json
+{
+    "nombre": "Laptop Gamer",
+    "precio": 1500,
+    "stock": 20,
+    "categoriaId": 1
+}
+```
+
+### Crear una Categoría (POST)
+
+**URL:** `http://localhost:3001/api/categorias`
+**Headers:** `Authorization: Bearer <TU_TOKEN>`
+**Body (JSON):**
+```json
+{
+    "nombre": "Tecnología"
+}
+```
 
 ## Paginación y Filtrado
 
